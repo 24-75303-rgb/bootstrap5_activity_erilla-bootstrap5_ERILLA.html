@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Website with Bootstrap 5</title>
+    <link rel="stylesheet" href="./bootstrap5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: #f8f9fa;
+        color: #212529;
+      }
+
+      html[data-bs-theme="dark"],
+      html[data-bs-theme="dark"] body {
+        background: #212529;
+        color: #dee2e6;
+      }
+
+      html[data-bs-theme="dark"] h1,
+      html[data-bs-theme="dark"] h2,
+      html[data-bs-theme="dark"] h3,
+      html[data-bs-theme="dark"] h4,
+      html[data-bs-theme="dark"] h5,
+      html[data-bs-theme="dark"] h6,
+      html[data-bs-theme="dark"] label,
+      html[data-bs-theme="dark"] .card,
+      html[data-bs-theme="dark"] .pricing-card,
+      html[data-bs-theme="dark"] .testimonial-card,
+      html[data-bs-theme="dark"] .form-card {
+        color: #dee2e6;
+      }
+
+      .navbar {
+        background: #ffffff !important;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        color: #0d6efd !important;
+      }
+
+      html[data-bs-theme="dark"] .navbar-brand {
+        color: #6ea8fe !important;
+      }
+
+      .navbar-nav .nav-link {
+        color: rgba(0, 0, 0, 0.7);
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link:focus {
+        color: #000;
+      }
+
+      .hero-wrap {
+        background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+        color: #fff;
+      }
+
+      .hero-wrap .container {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        text-align: center;
+      }
+
+      .hero-wrap .badge {
+        background: #fff;
+        color: #0d6efd;
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        border-radius: 50rem;
+        font-weight: 600;
+      }
+
+      h1 {
+        font-weight: 700;
+      }
+
+      .hero-wrap h1 {
+        max-width: none;
+      }
+
+      .lead {
+        max-width: 760px;
+      }
+
+      .btn {
+        border-radius: 0.5rem;
+        transition: background-color 0.25s ease, color 0.25s ease;
+      }
+
+      .btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        transition: background-color 0.25s ease, border-color 0.25s ease;
+      }
+
+      #contactForm button[type="submit"] {
+        background-color: #0d6efd !important;
+        border-color: #0d6efd !important;
+        color: #fff;
+        border-radius: 0.375rem;
+        font-weight: 600;
+      }
+
+      .btn-outline-primary {
+        color: #0d6efd;
+        border-color: #0d6efd;
+      }
+
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+      }
+
+      html[data-bs-theme="dark"] .navbar {
+        background: #2b3035 !important;
+        border-color: rgba(255,255,255,0.08) !important;
+      }
+      section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+
+      html[data-bs-theme="dark"] .navbar-nav .nav-link {
+        color: rgba(222, 226, 230, 0.75);
+      }
+      .section-heading {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 2.5rem;
+      }
+
+      .section-heading p {
+        margin-top: 0.5rem;
+        color: #6c757d;
+      }
+
+      .text-body-secondary {
+        color: #6c757d !important;
+      }
+
+      html[data-bs-theme="dark"] .text-body-secondary {
+        color: #adb5bd !important;
+      }
+
+      html[data-bs-theme="dark"] .text-muted {
+        color: #adb5bd !important;
+      }
+
+      html[data-bs-theme="dark"] .form-label {
+        color: #dee2e6 !important;
+      }
+
+      html[data-bs-theme="dark"] .navbar-nav .nav-link:hover,
+      html[data-bs-theme="dark"] .navbar-nav .nav-link:focus {
+        color: #fff;
+      }
+
+      html[data-bs-theme="dark"] .hero-wrap {
+        background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+      }
+
+      html[data-bs-theme="dark"] .lead {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .pricing-card,
+      .testimonial-card,
+      .form-card {
+        border: 1px solid rgba(0,0,0,0.08);
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.04);
+      }
+
+      html[data-bs-theme="dark"] .btn-outline-secondary {
+        color: #f8fafc;
+        border-color: rgba(148, 163, 184, 0.5);
+      }
+
+      html[data-bs-theme="dark"] .text-primary,
+      html[data-bs-theme="dark"] .btn-outline-primary {
+        color: #6ea8fe !important;
+      }
+
+      html[data-bs-theme="dark"] .btn-outline-primary {
+        border-color: #6ea8fe;
+      }
+
+      html[data-bs-theme="dark"] .btn-primary {
+        background-color: #6ea8fe;
+        border-color: #6ea8fe;
+        color: #000;
+      }
+
+      html[data-bs-theme="dark"] #contactForm button[type="submit"] {
+        background-color: #0d6efd !important;
+        border-color: #0d6efd !important;
+        color: #fff;
+      }
+
+      html[data-bs-theme="dark"] .text-success {
+        color: #75b798 !important;
+      }
+
+      html[data-bs-theme="dark"] .text-danger {
+        color: #ea868f !important;
+      }
+
+      html[data-bs-theme="dark"] .bg-light {
+        background: #212529 !important;
+      }
+
+      html[data-bs-theme="dark"] .pricing-card,
+      html[data-bs-theme="dark"] .testimonial-card,
+      html[data-bs-theme="dark"] .form-card {
+        background: #212529;
+        border-color: rgba(255,255,255,0.08);
+        box-shadow: 0 0.125rem 0.7rem rgba(0,0,0,0.28);
+      }
+
+      html[data-bs-theme="dark"] .card {
+        background: #212529;
+        border-color: rgba(255,255,255,0.08);
+      }
+
+      html[data-bs-theme="dark"] .section-heading p,
+      html[data-bs-theme="dark"] #contact p,
+      html[data-bs-theme="dark"] .testimonial-card small {
+        color: #adb5bd;
+      }
+
+      .bg-body-secondary {
+        background-color: #e9ecef !important;
+      }
+
+      #features {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+
+      html[data-bs-theme="dark"] .bg-body-secondary {
+        background-color: #343a40 !important;
+      }
+
+      .bg-light {
+        background: #f8f9fa !important;
+      }
+
+      .pricing-card {
+        padding: 1.5rem 1.25rem;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pricing-card h5 {
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .pricing-card h1 {
+        font-size: 3rem;
+        margin: 0.25rem 0 1rem;
+      }
+      .pricing-card .text-muted {
+        color: #6c757d !important;
+      }
+
+      .pricing-card .list-unstyled {
+        margin-bottom: 1.25rem;
+        color: #495057;
+        text-align: left;
+      }
+
+      html[data-bs-theme="dark"] .pricing-card .list-unstyled {
+        color: #e5e7eb;
+      }
+
+      .pricing-card li {
+        margin-bottom: 0.45rem;
+      }
+
+      .pricing-card button {
+        font-weight: 600;
+      }
+
+      .pricing-card.featured {
+        border: 2px solid #0d6efd;
+        position: relative;
+        border-radius: 0.375rem;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+      }
+
+      html[data-bs-theme="dark"] .pricing-card.featured {
+        border-color: #6ea8fe;
+      }
+
+      .pricing-card.featured .badge {
+        position: absolute;
+        top: -0.8rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0d6efd;
+        border-radius: 50rem;
+        padding: 0.5rem 1rem;
+      }
+
+      html[data-bs-theme="dark"] .pricing-card.featured .badge {
+        background: #6ea8fe;
+        color: #000;
+      }
+
+      .testimonial-card {
+        text-align: left;
+      }
+
+      .testimonial-card p {
+        margin: 0 0 1rem 0;
+        font-size: 1.25rem;
+        line-height: 1.5;
+      }
+
+      .testimonial-carousel {
+        position: relative;
+        padding: 0;
+      }
+
+      .testimonial-carousel .carousel-control-prev,
+      .testimonial-carousel .carousel-control-next {
+        width: 2.5rem;
+        color: #0d6efd;
+        opacity: 1;
+      }
+
+      .testimonial-carousel .carousel-control-prev-icon,
+      .testimonial-carousel .carousel-control-next-icon {
+        width: 2rem;
+        height: 2rem;
+        background-color: #0d6efd;
+        background-size: 55%;
+        border-radius: 50%;
+      }
+
+      .testimonial-card h6 {
+        margin: 0;
+        font-weight: 700;
+      }
+
+      .testimonial-card small {
+        color: #6c757d;
+      }
+
+      #contact .container {
+        align-items: center;
+      }
+
+      #contact {
+        background: #fff;
+      }
+
+      html[data-bs-theme="dark"] #contact {
+        background: #212529;
+      }
+
+      #contact h2 {
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+      }
+
+      #contact p {
+        color: #6c757d;
+        margin: 0;
+      }
+
+      .form-card {
+        padding: 1.5rem;
+      }
+
+      #testimonials .testimonial-card {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      #contact .form-card {
+        padding: 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      #contact .row {
+        align-items: center;
+      }
+
+      #contactForm {
+        padding: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 400;
+      }
+
+      .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.65rem 0.8rem;
+        border-radius: 0.5rem;
+        border: 1px solid #dee2e6;
+        background: #fff;
+        color: #212529;
+      }
+
+      html[data-bs-theme="dark"] .form-control {
+        background: #2b3035;
+        border-color: #495057;
+        color: #dee2e6;
+      }
+
+      html[data-bs-theme="dark"] .form-control::placeholder {
+        color: rgba(222, 226, 230, 0.75);
+      }
+
+      .form-control:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+      }
+
+      footer {
+        background: #f8f9fa;
+        color: #6c757d;
+        padding: 1.5rem 0;
+        border-top: 1px solid #dee2e6;
+        text-align: center;
+      }
+
+      html[data-bs-theme="dark"] footer {
+        background: #2b3035;
+        border-top-color: #495057;
+      }
+
+      html[data-bs-theme="dark"] footer .socials a {
+        color: #adb5bd;
+      }
+
+      footer .container {
+        display: block;
+      }
+
+      footer .socials {
+        display: block;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+      }
+
+      footer .socials a {
+        color: #6c757d;
+        margin: 0 0.5rem;
+      }
+
+      footer small {
+        color: #6c757d;
+      }
+
+      html[data-bs-theme="dark"] footer small {
+        color: #adb5bd;
+      }
+
+      @media (max-width: 767px) {
+        .hero-wrap .container {
+          padding-top: 2.25rem;
+          padding-bottom: 2.25rem;
+        }
+
+        section {
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        }
+
+        #navbarNav {
+          padding-top: 0.75rem;
+        }
+
+        #themeToggle {
+          margin-top: 0;
+        }
+
+        .testimonial-carousel {
+          padding: 0;
+        }
+
+        .testimonial-carousel {
+          padding: 0 2.5rem;
+        }
+
+        footer .container {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top border-bottom">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="bi bi-bootstrap text-primary me-2"></i>Bootstrap5 Website
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+              <button id="themeToggle" class="btn btn-outline-secondary btn-sm rounded-pill" type="button" aria-label="Toggle dark mode">
+                <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header id="home" class="hero-wrap">
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <span class="badge mb-3">Version 5.3.8</span>
+            <h1 class="display-3 fw-bold mb-3">Build fast, responsive sites with Bootstrap</h1>
+            <p class="lead mb-4 text-white-50">
+              Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass,
+              utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+              <a href="#pricing" class="btn btn-light btn-lg px-4 fw-bold text-primary">Get Started</a>
+              <a href="https://github.com/twbs/bootstrap/releases/download/v5.3.8/bootstrap-5.3.8-dist.zip" class="btn btn-outline-light btn-lg px-4">
+                Download Boostrap 5.3.8
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="features" class="py-5 bg-body-secondary">
+        <div class="container py-4">
+          <div class="section-heading text-center mb-5">
+            <h2 class="fw-bold display-6">Powerful Features</h2>
+            <p class="text-body-secondary">Designed to give you full control over your layout and functionality.</p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm card-hover p-3">
+                <div class="card-body">
+                  <h4 class="card-title fw-bold">Dark Mode Ready</h4>
+                  <p class="card-text text-body-secondary">Built-in theme switcher using Bootstrap 5's native data-bs-theme attribute.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm card-hover p-3">
+                <div class="card-body">
+                  <h4 class="card-title fw-bold">100% Mobile First</h4>
+                  <p class="card-text text-body-secondary">Fully fluid layout engineered to scale down seamlessly to mobile screens.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm card-hover p-3">
+                <div class="card-body">
+                  <h4 class="card-title fw-bold">Interactive UI</h4>
+                  <p class="card-text text-body-secondary">Includes dynamic feedback toasts, sliders, and form validation logic.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Flexible Pricing</h2>
+            <p>Choose the plan that fits your business needs.</p>
+          </div>
+
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+              <div class="pricing-card card-hover h-100">
+                <h5 class="text-muted">Starter</h5>
+                <h1>₱0.00 <span class="fs-6 text-muted">/mo</span></h1>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>1 Project</li>
+                  <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Community Support</li>
+                  <li class="mb-2 text-muted"><i class="bi bi-x me-2"></i>Custom Domain</li>
+                </ul>
+                <button class="btn btn-outline-primary w-100 fw-semibold" type="button">Sign Up Free</button>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="pricing-card featured card-hover h-100">
+                <span class="badge">Most Popular</span>
+                <h5 class="text-primary">Pro Developer</h5>
+                <h1>₱49.00 <span class="fs-6 text-muted">/mo</span></h1>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Unlimited Projects</li>
+                  <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Priority Support</li>
+                  <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Custom Domain</li>
+                </ul>
+                <button class="btn btn-primary w-100 fw-semibold" type="button">Get Started Pro</button>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="pricing-card card-hover h-100">
+                <h5 class="text-muted">Enterprise</h5>
+                <h1>₱109.00 <span class="fs-6 text-muted">/mo</span></h1>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Dedicated Server</li>
+                  <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>24/7 Phone Support</li>
+                  <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>SLA Guarantee</li>
+                </ul>
+                <button class="btn btn-outline-primary w-100 fw-semibold" type="button">Contact Sales</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="bg-body-secondary text-center">
+        <div class="container">
+          <h2 class="fw-bold mb-4 display-6">What People Say</h2>
+
+          <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row justify-content-center">
+                  <div class="col-lg-8">
+                    <p class="fs-5 italic text-body-secondary">"This Bootstrap starter layout completely sped up my client workflow. Highly recommended!"</p>
+                    <h6 class="fw-bold mb-0">Calvin Placio, BSIT-Network Technology Track</h6>
+                    <small class="text-muted">Lead Developer, Code-Smart Solutions</small>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row justify-content-center">
+                  <div class="col-lg-8">
+                    <p class="fs-5 italic text-body-secondary">"The dark mode toggle integration works like a charm. Extremely clean markup!"</p>
+                    <h6 class="fw-bold mb-0">Harrold Evangelista, BSIT-Business Analytics Track</h6>
+                    <small class="text-muted">UI/UX Designer</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container py-4" style="max-width: 650px;">
+          <div class="text-center mb-4">
+            <h2 class="fw-bold display-6">Get In Touch</h2>
+            <p class="text-body-secondary">Fill out the form below to send us a live message.</p>
+          </div>
+
+          <form id="contactForm" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required />
+              </div>
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required />
+              </div>
+              <div class="col-12">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required />
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-4 py-2 fw-semibold">Submit Form</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-body-tertiary border-top py-4 text-center">
+      <div class="container">
+        <div class="socials mb-3 fs-5">
+          <a href="#" class="text-body-secondary mx-2" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-body-secondary mx-2" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="text-body-secondary mx-2" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        </div>
+        <small class="text-body-secondary">© 2026 SirMags. Built with Bootstrap 5.3.</small>
+      </div>
+    </footer>
+
+    <script src="./bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const root = document.documentElement;
+      const savedTheme = localStorage.getItem('theme');
+
+      function applyTheme(theme) {
+        const isDark = theme === 'dark';
+        root.setAttribute('data-bs-theme', theme);
+        localStorage.setItem('theme', theme);
+        themeIcon.className = isDark
+          ? 'bi bi-sun-fill'
+          : 'bi bi-moon-stars-fill';
+      }
+
+      if (savedTheme) {
+        applyTheme(savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        applyTheme('dark');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-bs-theme');
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+
+      const contactForm = document.getElementById('contactForm');
+      contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!contactForm.checkValidity()) {
+          contactForm.classList.add('was-validated');
+          Swal.fire({
+            icon: 'warning',
+            title: 'Please complete the form',
+            text: 'All required fields must be filled before sending.',
+            confirmButtonColor: '#0d6efd'
+          });
+          return;
+        }
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Message Sent!',
+          text: 'Thank you for reaching out. We will contact you shortly.',
+          confirmButtonColor: '#0d6efd'
+        });
+
+        contactForm.reset();
+        contactForm.classList.remove('was-validated');
+      });
+    </script>
+  </body>
+</html>
